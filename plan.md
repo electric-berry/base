@@ -12,4 +12,3 @@ Input street area -> EV Charger spots
 4. Output to User (GUI)
 
 (0.1)? Write code for Raspberry pi to collect data
-:)
