@@ -1,0 +1,16 @@
+input location
+input budget
+input num_simulations
+
+access road data
+possible_spots = [possible_spot for ev chargers]
+
+for simulation in num_simulations:
+    # run genetic algorithm https://en.wikipedia.org/wiki/Genetic_algorithm
+    # each agent consists of a configuration of budgets
+    generate_population()
+    calculate_fitness() #using one of the three different policies
+    pick top 10% of poulation()
+    crossover()
+
+return top agent

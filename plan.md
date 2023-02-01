@@ -8,5 +8,3 @@ Input street area -> EV Charger spots
 4. Find best possible config
 
 (0.1)? Write code for Raspberry pi to collect data
-
-
