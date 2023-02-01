@@ -1,0 +1,3 @@
+Write Script to Access Charger and Traffic Data, given location
+Write "fitness" function to calculate profitability and thing
+Write front-end interface
