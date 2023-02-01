@@ -14,3 +14,5 @@ for simulation in num_simulations:
     crossover()
 
 return top agent
+
+a[budget coordinates]
