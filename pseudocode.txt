@@ -1,14 +1,14 @@
 input location
 input budget
-input num_simulations
+input num_simulations 
 
 access road data
-possible_spots = [possible_spot for ev chargers]
+possible_spots = [possible_spot for ev chargers] (Sim)
 
 for simulation in num_simulations:
-    # run genetic algorithm https://en.wikipedia.org/wiki/Genetic_algorithm
+    # run genetic algorithm https://en.wikipedia.org/wiki/Genetic_algorithm 
     # each agent consists of a configuration of budgets
-    generate_population()
+    generate_population() 
     calculate_fitness() #using one of the three different policies
     for profitability:
         
@@ -17,4 +17,4 @@ for simulation in num_simulations:
 
 return top agent
 
-a[budget coordinates]
+agents[budget coordinates]
