@@ -10,8 +10,6 @@ for simulation in num_simulations:
     # each agent consists of a configuration of budgets
     generate_population() 
     calculate_fitness() #using one of the three different policies
-    for profitability:
-        
     pick top 10% of poulation()
     crossover()
 
