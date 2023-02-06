@@ -5,4 +5,11 @@ def test_func(agent):
     
     
 def fitness_func(possible_coords):
+    '''
+    start car on random part of road (weighted on traffic)
+    count when fuel is at certain level, refill
+    calculate the cost for fuel
+    rinse and repeat n times
+    calculate average profitability
+    '''
     pass
