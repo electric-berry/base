@@ -64,7 +64,7 @@ def get_possible_spots():
         # ax.plot(latitudes[i:i+2], longitudes[i:i+2], 'bo-', linewidth=0.1, markersize=1)
         
         counter += 1
-    return possible,latitudes,longitudes
+    return list(possible),latitudes,longitudes
 
 # Points is the possible variables
 # Latitudes and Longitudes are the road data.

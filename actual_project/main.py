@@ -1,6 +1,9 @@
 from access_data import get_possible_spots
 from input_data import get_data
+from genetic_algorithm import genetic_algorithm
 
 get_data("Birmingham")
 possible,latitudes,longitudes = get_possible_spots()
-print(possible)
+ga = genetic_algorithm
+agent = ga.execute(10000,1000,0.0001,possible,10)
+print(agent.fitness,agent.config)

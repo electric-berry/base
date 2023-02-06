@@ -1,6 +1,7 @@
 import random
 import numpy as np
 from IPython.display import clear_output
+from fitness import test_func
 
 def sigmoid(x):
     return 1/(1+np.exp(-x))
@@ -17,7 +18,7 @@ class genetic_algorithm:
                     self.config.append(possible_coords[i])
                 self.fitness = 0
             def __str__(self):
-                    return 'Loss: ' + str(self.fitness[0])
+                    return 'Loss: ' + str(self.fitness)
         
                 
         def generate_agents(population):
@@ -25,8 +26,7 @@ class genetic_algorithm:
         
         def fitness(agents):
             for agent in agents:
-                fitness = 0
-                agent.fitness = fitness
+                agent.fitness = test_func(agent)
             return agents
         
         def selection(agents):
@@ -44,7 +44,7 @@ class genetic_algorithm:
                 index += size
             return newarray
         
-        def crossover(agents,network,pop_size):
+        def crossover(agents,pop_size):
             offspring = []
             for _ in range((pop_size - len(agents)) // 2):
                 parent1 = random.choice(agents)
@@ -65,20 +65,8 @@ class genetic_algorithm:
         def mutation(agents):
             for agent in agents:
                 if random.uniform(0.0, 1.0) <= 0.1:
-                    weights = agent.neural_network.weights
-                    shapes = [a.shape for a in weights]
-
-                    flattened = np.concatenate([a.flatten() for a in weights])
-                    randint = random.randint(0,len(flattened)-1)
-                    flattened[randint] = np.random.randn()
-
-                    newarray = []
-                    indeweights = 0
-                    for shape in shapes:
-                        size = np.product(shape)
-                        newarray.append(flattened[indeweights : indeweights + size].reshape(shape))
-                        indeweights += size
-                    agent.neural_network.weights = newarray
+                    change_idx = random.randint(0,budget-1)
+                    agent.config[change_idx] = random.choice(possible_coords)
             return agents
         
         agents = generate_agents(pop_size)
@@ -94,7 +82,7 @@ class genetic_algorithm:
             # print(len(agents))
             
             
-            if any(agent.fitness < threshold for agent in agents):
+            if any(agent.fitness > threshold for agent in agents):
                 print('Threshold met at generation '+str(i)+' !')
                 break
                 
