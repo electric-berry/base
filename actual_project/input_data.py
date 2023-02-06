@@ -1,7 +1,6 @@
 import requests
 import re
 def get_data(target):
-
     r = requests.get('https://roadtraffic.dft.gov.uk/local-authorities')
     x = re.search(f'<a href="/local-authorities/[\d]+">{target}</a>', r.text)
     end = re.search('[\d]+', x.group())
