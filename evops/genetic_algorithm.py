@@ -1,7 +1,7 @@
 import random
 import numpy as np
-from IPython.display import clear_output
 from math import radians, cos, sin, asin, sqrt
+import os
 
 
 def sigmoid(x):
@@ -51,7 +51,8 @@ class genetic_algorithm:
             def __str__(self):
                 return 'Loss: ' + str(self.fitness)
             
-        def profit(agent,distance_limit = 0.05,simuls = 100,distance_depth = 0.3):
+        def profit(agent,distance_limit = 1000,simuls = 10,distance_depth = 0.3):
+            print("Call")
             '''
             setup adjacency matrix
             choose point
@@ -62,7 +63,6 @@ class genetic_algorithm:
             profit = 0
             chargers = [points.index(charger) for charger in agent.config]
 
-            distance_depth = 0.05
             visited = set()
             for _ in range(simuls):
                 random_idx = random.randint(1,len(points)-1)
@@ -76,7 +76,7 @@ class genetic_algorithm:
                     point1,capacity,distance = queue[head]
                     head += 1
                     new_states = neighbors[point1]
-                    if distance < distance_depth:
+                    if distance < distance_limit:
                         for point2 in new_states:
                             if not(tuple(sorted([point1,point2])) in visited):
                                 # print(point1,point2)
@@ -84,6 +84,7 @@ class genetic_algorithm:
                                 # convert distance to miles and
                                 # ! https://www.fleetalliance.co.uk/driver-ev/mpg-to-kwh-electric-car-efficiency-explained/#:~:text=Most%20EVs%20will%20cover%20between,it%20will%20cost%20to%20run.
                                 # change capacity by distance
+                                print(distance + distances[tuple(sorted([point1,point2]))])
                                 new_state = [point2,capacity,distance + distances[tuple(sorted([point1,point2]))]]
                                 queue.append(new_state)
                                 # print(queue)
@@ -92,7 +93,7 @@ class genetic_algorithm:
                                 profit += (50-capacity)*0.34
                                 capacity = 50
                     else:
-                        # print("DISTANCE PASS")
+                        print("DISTANCE PASS")
                         break
                 # check if charger at new_state, if yes charge and count cost
                 # if point2 in chargers:
@@ -157,7 +158,7 @@ class genetic_algorithm:
             # print(len(agents))
             agents = crossover(agents, pop_size)
             agents = mutation(agents)
-            agents = fitness(agents)
+            # agents = fitness(agents)
             print(agents[0])
             # print(len(agents))
 
@@ -166,7 +167,7 @@ class genetic_algorithm:
                 break
 
             if i % 5 == 0:
-                clear_output()
+                os.system("cls")
 
         return agents[0]
 
