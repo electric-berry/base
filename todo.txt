@@ -1,3 +1,4 @@
 Write Script to Access Charger and Traffic Data, given location (done)
 Write "fitness" function to calculate profitability
+Create animations with matplotlib 
 Write front-end interface
