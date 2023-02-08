@@ -16,9 +16,9 @@ possible,latitudes,longitudes = get_possible_spots()
 print("Done!")
 ga = genetic_algorithm
 print("Running Genetic Algorithm...")
-agent = ga.execute(latitudes,longitudes,100,1000,100,possible,800)
+agent = ga.execute(latitudes,longitudes,100,1000,1000,possible,100)
 print("Done!")
-# Population size, generations,threshold,possible_coordinates,budget
+# lats, longi, Population size, generations,threshold,possible_coordinates,budget
 # print(agent.fitness,agent.config)
 optimal = agent.config
 os.system("cls")
