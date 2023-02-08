@@ -22,7 +22,7 @@ def haversine(pt1,pt2):
 
 class genetic_algorithm:
 
-    def execute(latitudes, longitudes, pop_size, generations, threshold, possible_coords, budget, distance_limit=10):
+    def execute(latitudes, longitudes, pop_size, generations, threshold, possible_coords, budget, distance_limit=1):
         neighbors = {i: () for i in range(len(latitudes))}
         distances = {}
         points = sorted([[latitudes[i], longitudes[i]]
@@ -52,7 +52,7 @@ class genetic_algorithm:
                 return 'Loss: ' + str(self.fitness)
             
         def profit(agent,distance_limit = 1000,simuls = 10,distance_depth = 0.3):
-            print("Call")
+            # print("Call")
             '''
             setup adjacency matrix
             choose point
@@ -62,6 +62,7 @@ class genetic_algorithm:
             '''
             profit = 0
             chargers = [points.index(charger) for charger in agent.config]
+            # print("CHARGERS",chargers)
 
             visited = set()
             for _ in range(simuls):
@@ -76,25 +77,29 @@ class genetic_algorithm:
                     point1,capacity,distance = queue[head]
                     head += 1
                     new_states = neighbors[point1]
+                    # print(point1,new_states)
                     if distance < distance_limit:
-                        for point2 in new_states:
+                        for point2 in new_states[:3]:
                             if not(tuple(sorted([point1,point2])) in visited):
+                                capacity -= distance*3
+                                if point2 in chargers:
+                                    # print("CHARGED")
+                                    profit += (50-capacity)*0.34
+                                    capacity = 50
                                 # print(point1,point2)
-                                capacity -= distance/3
+                                # print(distance*3)
                                 # convert distance to miles and
                                 # ! https://www.fleetalliance.co.uk/driver-ev/mpg-to-kwh-electric-car-efficiency-explained/#:~:text=Most%20EVs%20will%20cover%20between,it%20will%20cost%20to%20run.
                                 # change capacity by distance
-                                print(distance + distances[tuple(sorted([point1,point2]))])
+                                # print(distance,distances[tuple(sorted([point1,point2]))])
                                 new_state = [point2,capacity,distance + distances[tuple(sorted([point1,point2]))]]
                                 queue.append(new_state)
                                 # print(queue)
                                 visited.add(tuple(sorted([point1,point2])))
-                            if point2 in chargers:
-                                profit += (50-capacity)*0.34
-                                capacity = 50
                     else:
-                        print("DISTANCE PASS")
+                        # print("DISTANCE PASS")
                         break
+                # print(queue)
                 # check if charger at new_state, if yes charge and count cost
                 # if point2 in chargers:
                 #     profit += (50-capacity)*0.34
@@ -115,15 +120,6 @@ class genetic_algorithm:
             # print('\n'.join(map(str, agents)))
             agents = agents[:int(0.2 * len(agents))]
             return agents
-
-        def unflatten(flattened, shapes):
-            newarray = []
-            index = 0
-            for shape in shapes:
-                size = np.product(shape)
-                newarray.append(flattened[index: index + size].reshape(shape))
-                index += size
-            return newarray
 
         def crossover(agents, pop_size):
             offspring = []
