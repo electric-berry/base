@@ -1,12 +1,8 @@
 import random
 import numpy as np
 from math import radians, cos, sin, asin, sqrt
+import pandas as pd
 import os
-
-
-def sigmoid(x):
-    return 1/(1+np.exp(-x))
-
 def haversine(pt1,pt2):
     # output in miles
     lon1, lat1 = pt1
@@ -22,7 +18,7 @@ def haversine(pt1,pt2):
 
 class genetic_algorithm:
 
-    def execute(latitudes, longitudes, pop_size, generations, threshold, possible_coords, budget, distance_limit=1):
+    def execute(latitudes, longitudes, traffic, pop_size, generations, possible_coords, budget, distance_limit=1):
         neighbors = {i: () for i in range(len(latitudes))}
         distances = {}
         points = sorted([[latitudes[i], longitudes[i]]
@@ -39,6 +35,7 @@ class genetic_algorithm:
                     neighbors[point_2] = tuple(
                         list(neighbors[point_2]) + [point_1])
                     distances[tuple([point_1, point_2])] = distance
+            
 
         class Agent:
             def __init__(self):
@@ -49,9 +46,9 @@ class genetic_algorithm:
                 self.fitness = 0
 
             def __str__(self):
-                return 'Loss: ' + str(self.fitness)
+                return 'Fitness: ' + str(self.fitness)
             
-        def profit(agent,distance_limit = 1000,simuls = 10,distance_depth = 0.3):
+        def profit(agent,distance_limit = 1000,simuls = 100):
             # print("Call")
             '''
             setup adjacency matrix
@@ -75,8 +72,10 @@ class genetic_algorithm:
                 # print(queue)
                 while head < len(queue):
                     point1,capacity,distance = queue[head]
+                
                     head += 1
                     new_states = neighbors[point1]
+                    traffic_value = traffic[point1]/len(new_states)
                     # print(point1,new_states)
                     if distance < distance_limit:
                         for point2 in new_states[:3]:
@@ -84,7 +83,7 @@ class genetic_algorithm:
                                 capacity -= distance*3
                                 if point2 in chargers:
                                     # print("CHARGED")
-                                    profit += (50-capacity)*0.34
+                                    profit += (50-capacity)*0.34*traffic_value
                                     capacity = 50
                                 # print(point1,point2)
                                 # print(distance*3)
@@ -105,7 +104,7 @@ class genetic_algorithm:
                 #     profit += (50-capacity)*0.34
                     # ! https://www.which.co.uk/reviews/new-and-used-cars/article/electric-car-charging-guide/how-much-does-it-cost-to-charge-an-electric-car-a8f4g1o7JzXj
                 # ? possibly add regression or research to estimate traffic
-            return profit
+            return profit/simuls/len(chargers)
 
         def generate_agents(population):
             return [Agent() for _ in range(population)]
@@ -113,11 +112,12 @@ class genetic_algorithm:
         def fitness(agents):
             for agent in agents:
                 agent.fitness = profit(agent)
+                # print(agent)
             return agents
 
         def selection(agents):
             agents = sorted(
-                agents, key=lambda agent: agent.fitness, reverse=False)
+                agents, key=lambda agent: agent.fitness, reverse=True)
             # print('\n'.join(map(str, agents)))
             agents = agents[:int(0.2 * len(agents))]
             return agents
@@ -148,20 +148,25 @@ class genetic_algorithm:
             return agents
 
         agents = generate_agents(pop_size)
+        agents = fitness(agents)
         for i in range(generations):
             print('Generation', str(i), ':')
-            agents = fitness(agents)
             agents = selection(agents)
             # print(len(agents))
             agents = crossover(agents, pop_size)
             agents = mutation(agents)
-            # agents = fitness(agents)
+            agents = fitness(agents)
+            agents = sorted(
+                agents, key=lambda agent: agent.fitness, reverse=True)
+            # for agent in agents:
+            #     print(agent)
             print(agents[0])
             # print(len(agents))
+            # print(len(agents))
 
-            if any(agent.fitness > threshold for agent in agents):
-                print('Threshold met at generation '+str(i)+' !')
-                break
+            # if any(agent.fitness > threshold for agent in agents):
+            #     print('Threshold met at generation '+str(i)+' !')
+            #     break
 
             if i % 5 == 0:
                 os.system("cls")
