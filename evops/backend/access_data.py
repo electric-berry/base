@@ -6,16 +6,20 @@ def get_possible_spots():
     csv = pandas.read_csv("data.csv")
     latitude = list(csv.columns).index("latitude")
     longitude = list(csv.columns).index("longitude")
+    traffic = list(csv.columns).index("all_motor_vehicles")
     latitudes = []
     longitudes = []
+    traffics = []
     pairs = []
     for row in csv.values:
         lat = float(row[latitude])
         longi = float(row[longitude])
+        traf = int(row[traffic])
         if not([lat,longi] in pairs):
             latitudes.append(lat)
             longitudes.append(longi)
             pairs.append([lat,longi])
+            traffics.append(traf)
 
     possible = pairs
     # def points_from_line(start_point,end_point,distance = 0.1,y_distance = 0.01):
@@ -64,7 +68,7 @@ def get_possible_spots():
     #     # ax.plot(latitudes[i:i+2], longitudes[i:i+2], 'bo-', linewidth=0.1, markersize=1)
         
     #     counter += 1
-    return list(possible),latitudes,longitudes
+    return list(possible),latitudes,longitudes,traffics
 
 # Points is the possible variables
 # Latitudes and Longitudes are the road data.
