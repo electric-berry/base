@@ -22,7 +22,7 @@ def haversine(pt1,pt2):
 
 class genetic_algorithm:
 
-    def execute(latitudes, longitudes, pop_size, generations, threshold, possible_coords, budget, distance_limit=1):
+    def execute(latitudes, longitudes, pop_size, generations, possible_coords, budget, distance_limit=1):
         neighbors = {i: () for i in range(len(latitudes))}
         distances = {}
         points = sorted([[latitudes[i], longitudes[i]]
@@ -117,7 +117,7 @@ class genetic_algorithm:
 
         def selection(agents):
             agents = sorted(
-                agents, key=lambda agent: agent.fitness, reverse=False)
+                agents, key=lambda agent: agent.fitness, reverse=True)
             # print('\n'.join(map(str, agents)))
             agents = agents[:int(0.2 * len(agents))]
             return agents
@@ -155,13 +155,13 @@ class genetic_algorithm:
             # print(len(agents))
             agents = crossover(agents, pop_size)
             agents = mutation(agents)
-            # agents = fitness(agents)
+            agents = fitness(agents)
             print(agents[0])
             # print(len(agents))
 
-            if any(agent.fitness > threshold for agent in agents):
-                print('Threshold met at generation '+str(i)+' !')
-                break
+            # if any(agent.fitness > threshold for agent in agents):
+            #     print('Threshold met at generation '+str(i)+' !')
+            #     break
 
             if i % 5 == 0:
                 os.system("cls")
