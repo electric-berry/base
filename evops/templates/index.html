@@ -19,8 +19,8 @@
     <script src="{{ url_for('static', filename='js/script.js') }}" /></script>
     <script>
         {% for marker in markers %}
-        L.marker([{{ marker['lat'] }}, {{ marker['lon'] }}]).addTo(map)
-            .bindPopup("{{ marker['popup'] }}")
+        L.marker([{{ marker[0] }}, {{ marker[1] }}]).addTo(map)
+            .bindPopup("test")
             .openPopup();
         {% endfor %}
     </script>
