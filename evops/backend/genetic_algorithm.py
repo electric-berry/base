@@ -104,7 +104,7 @@ class genetic_algorithm:
                 #     profit += (50-capacity)*0.34
                     # ! https://www.which.co.uk/reviews/new-and-used-cars/article/electric-car-charging-guide/how-much-does-it-cost-to-charge-an-electric-car-a8f4g1o7JzXj
                 # ? possibly add regression or research to estimate traffic
-            return profit
+            return profit/simuls/len(chargers)
 
         def generate_agents(population):
             return [Agent() for _ in range(population)]
