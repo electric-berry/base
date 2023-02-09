@@ -1,8 +1,29 @@
 body {
     padding: 0;
     margin: 0;
-    }
-    html, body, #map {
-    height: 100%;
-    width: 100vw;
-    }
+}
+#map {
+    height: 700px;
+    width: 700px;
+    position: fixed;
+    margin-top: 124px;
+    margin-left: 24px;
+}
+
+#input{
+    position: fixed;
+    margin-left: 1056px;
+    margin-top: 695px;
+    outline-color: black;
+    outline-width: 100px;
+    height: 600px;
+    width: 700px;
+}
+
+h1 {
+    position: fixed;
+    margin-left: 45%;
+    margin-top: 24px;
+    font-size: 48px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}

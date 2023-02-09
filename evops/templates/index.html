@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Flask Leaflet Website</title>
+    <title>EVOps</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
@@ -13,16 +13,18 @@
         integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
         crossorigin=""></script>
 </head>
-
+<h1>EVOps</h1>
 <body>
     <div id="map"></div>
+    <div id="input">asdgvfhijasdfuhi</div>
     <script src="{{ url_for('static', filename='js/script.js') }}" /></script>
     <script>
-        {% for marker in markers %}
+<!--         {% for marker in markers %}
         L.marker([{{ marker[0] }}, {{ marker[1] }}]).addTo(map)
-            .bindPopup("test")
-            .openPopup();
+            .bindPopup("fghjaksdjfhs")
         {% endfor %}
+        map.setZoom(12)
+        map.panTo(new L.LatLng({{lat}}, {{lon}})); -->
     </script>
 </body>
 </html>
