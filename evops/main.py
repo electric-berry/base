@@ -6,7 +6,7 @@ import os
 
 #TODO:
 # 1. Fix (?) genetic algorithm (doneish)
-# 2. Change csv output format to include latitude and longitude column names
+# 2. Change csv output format to include latitude and longitude column names 
 # 3. Add more args to get_csv()
 
 def get_csv(location):

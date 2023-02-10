@@ -23,6 +23,8 @@
             position: fixed;
             margin-top: 8.5%;
             margin-left: 1.5%;
+            outline: 5px solid black;
+            border-radius: 25px;
         }
         
         #input{
@@ -35,6 +37,7 @@
             outline: 5px solid black;
             height: 50%;
             width: 45%;
+            border-radius: 25px;
         }
 
         #logs{
@@ -47,6 +50,7 @@
             outline: 5px solid black;
             height: 28%;
             width: 45%;
+            border-radius: 25px;
         }
         
         h1 {
@@ -67,7 +71,7 @@
     <script>
          {% for marker in markers %}
         L.marker([{{ marker[0] }}, {{ marker[1] }}]).addTo(map)
-            .bindPopup("fghjaksdjfhs")
+            .bindPopup("EV Charging point")
         {% endfor %}
         map.setZoom(12)
         map.panTo(new L.LatLng({{lat}}, {{lon}}));

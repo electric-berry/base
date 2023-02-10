@@ -20,5 +20,6 @@ ls = LiveServer(app)
 def index():
     return render_template('index.html', markers=markers, lat=lat, lon=lon)
 
-#if __name__ == '__main__':
-ls.run("0.0.0.0", 8080)
+if __name__ == '__main__':
+    ls.run("0.0.0.0", 8080)
+    app.run
