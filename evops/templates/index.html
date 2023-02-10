@@ -29,7 +29,7 @@
         
         #input{
             text-align: center;
-            font-size: 25px;
+            font-size: 20px;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             position: fixed;
             margin-left: 52.5%;
@@ -60,13 +60,51 @@
             font-size: 48px;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
+
+        text {
+            font-size:25px;
+        }
+
+        p {
+            font-size: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
     </style>
+    <script>
+        const value = document.querySelector("#popoutput")
+        const input = document.querySelector("#popinput")
+        value.textContent = input.value
+        input.addEventListener("input", (event) => {
+        value.textContent = event.target.value
+        })
+    </script>
 </head>
 <h1>EVOps</h1>
 <body>
     <div id="map"></div>
     <div id="logs">Logs</div>
-    <div id="input">Parameters</div>
+    <div id="input">
+        <text> Parameters </text>
+        <br><br><br>
+        <form action="">
+            <label for="reginput"> Region </label> <br>
+            <input id="reginput" type="select">
+            <br><br>
+            <label for="popinput"> Population Size </label> <br>
+            <input id="popinput" type="range" value="500" min="100" max="1000" step="10" oninput="this.nextElementSibling.value = this.value" style="width: 300px;">
+            <output>500</output>
+            <br><br>
+            <label for="geninput"> Generations </label> <br>
+            <input id="geninput" type="range" value="50" min="10" max="1000" step="10" oninput="this.nextElementSibling.value = this.value" style="width: 300px;">
+            <output>50</output>
+            <br><br>
+            <label for="budinput"> Budget </label> <br>
+            <input id="budinput" type="range" value="250" min="20" max="1000" step="10" oninput="this.nextElementSibling.value = this.value" style="width: 300px;">
+            <output>250</output>
+            <br><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
     <script src="{{ url_for('static', filename='js/script.js') }}" /></script>
     <script>
          {% for marker in markers %}
