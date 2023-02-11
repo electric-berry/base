@@ -97,9 +97,9 @@
     <div id="input">
         <text> Parameters </text>
         <br><br>
-        <form onsubmit="getmarkers()">
+        <form action="{{ url_for('index')}}" method="post">
             <label for="reginput"> Choose a region: </label> <br>
-            <input id="reginput" list="regions">
+            <input id="reginput" name="region" list="regions">
             <datalist id="regions">
                 <option value="Aberdeen City">
                 <option value="Aberdeenshire">
@@ -314,15 +314,15 @@
             </datalist>
             <br><br>
             <label for="popinput"> Population Size: </label> <br>
-            <input id="popinput" type="range" value="500" min="100" max="1000" step="10" oninput="this.nextElementSibling.value = this.value" style="width: 300px;">
+            <input id="popinput" name="pop" type="range" value="500" min="100" max="1000" step="10" oninput="this.nextElementSibling.value = this.value" style="width: 300px;">
             <input value="500" style="width: 50px; height: 25px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 20px;" oninput="document.getElementById('popinput').value = this.value">
             <br><br>
             <label for="geninput"> Generations: </label> <br>
-            <input id="geninput" type="range" value="50" min="10" max="1000" step="10" oninput="this.nextElementSibling.value = this.value" style="width: 300px;">
+            <input id="geninput" name="gen" type="range" value="50" min="10" max="1000" step="10" oninput="this.nextElementSibling.value = this.value" style="width: 300px;">
             <input value="500" style="width: 50px; height: 25px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 20px;" oninput="document.getElementById('geninput').value = this.value">
             <br><br>
             <label for="budinput"> Budget: </label> <br>
-            <input id="budinput" type="range" value="250" min="20" max="1000" step="10" oninput="this.nextElementSibling.value = this.value" style="width: 300px;">
+            <input id="budinput" name="bud" type="range" value="250" min="20" max="1000" step="10" oninput="this.nextElementSibling.value = this.value" style="width: 300px;">
             <input value="500" style="width: 50px; height: 25px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 20px;" oninput="document.getElementById('budinput').value = this.value">
             <br><br>
             <input id="submit" type="submit" value="Submit">

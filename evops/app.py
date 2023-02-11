@@ -1,23 +1,31 @@
-from flask import Flask, render_template
+from flask import Flask, request, render_template
 from main import get_csv
 import pandas as pd
 import numpy as np
 from liveserver import LiveServer
+from locations import locations
 
-#get_csv("Hampshire")
-df = pd.read_csv('optimal.csv')
-lats = df.iloc[:,0]
-lons = df.iloc[:,1]
-lat = np.median(lats)
-lon = np.median(lons)
-app = Flask(__name__)
-markers = df.to_numpy()
-ls = LiveServer(app)
 empty = np.array([])
+app = Flask(__name__)  
+ls = LiveServer(app)
 
-@app.route('/')
+@app.route('/', methods =["GET", "POST"])
 def index():
-    return render_template('index.html', markers=empty)
+    if request.method == "GET":
+        return render_template('index.html', markers=empty)
+    elif request.method == "POST":
+        region = request.form.get("region")
+        if region in locations:
+            get_csv(region)
+            df = pd.read_csv('optimal.csv')
+            lats = df.iloc[:,0]
+            lons = df.iloc[:,1]
+            lat = np.median(lats)
+            lon = np.median(lons)
+            markers = df.to_numpy()
+            return render_template('index.html', markers=markers, lat=lat,lon=lon)
+        else:
+            return "Please select a valid region in the drop down list."
 
 #if __name__ == '__main__':
 ls.run('0.0.0.0', '8080')

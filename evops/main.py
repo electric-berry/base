@@ -18,7 +18,7 @@ def get_csv(location):
         print("Processing existing CSV file...")
     print("Done!")
     print("Processing Data...")
-    possible,latitudes,longitudes = get_possible_spots()
+    possible,latitudes,longitudes = get_possible_spots() # ! possible,latitudes,longitudes = get_possible_spots() ValueError: too many values to unpack (expected 3)
     print("Done!")
     ga = genetic_algorithm
     print("Running Genetic Algorithm...")

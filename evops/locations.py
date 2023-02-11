@@ -1,4 +1,4 @@
-const locations = [
+locations = [
   "Aberdeen City",
   "Aberdeenshire",
   "Angus",
@@ -210,7 +210,3 @@ const locations = [
   "Wrexham",
   "York",
 ];
-
-
-
-module.exports = locations;
