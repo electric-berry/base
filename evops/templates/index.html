@@ -27,7 +27,7 @@
             border-radius: 25px;
         }
         
-        #input{
+        #input {
             text-align: center;
             font-size: 20px;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -40,7 +40,7 @@
             border-radius: 25px;
         }
 
-        #logs{
+        #logs {
             text-align: center;
             font-size: 25px;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -52,6 +52,14 @@
             width: 45%;
             border-radius: 25px;
         }
+
+        #reginput {
+            width: 200px;
+            height: 25px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 20px;
+            margin-top: 5px;
+        }
         
         h1 {
             position: fixed;
@@ -62,7 +70,8 @@
         }
 
         text {
-            font-size:25px;
+            font-size: 27px;
+            margin-bottom: 5px;
         }
 
         p {
@@ -82,37 +91,256 @@
 <h1>EVOps</h1>
 <body>
     <div id="map"></div>
-    <div id="logs">Logs</div>
+    <div id="logs">
+        <text> Logs </text>
+    </div>
     <div id="input">
         <text> Parameters </text>
-        <br><br><br>
-        <form action="">
-            <label for="reginput"> Region </label> <br>
-            <input id="reginput" type="select">
+        <br><br>
+        <form onsubmit="getmarkers()">
+            <label for="reginput"> Choose a region: </label> <br>
+            <input id="reginput" list="regions">
+            <datalist id="regions">
+                <option value="Aberdeen City">
+                <option value="Aberdeenshire">
+                <option value="Angus">
+                <option value="Argyll & Bute">
+                <option value="Barking and Dagenham">
+                <option value="Barnet">
+                <option value="Barnsley">
+                <option value="Bath and North East Somerset">
+                <option value="Bedford">
+                <option value="Bexley">
+                <option value="Birmingham">
+                <option value="Blackburn with Darwen">
+                <option value="Blackpool">
+                <option value="Blaenau Gwent">
+                <option value="Bolton">
+                <option value="Bournemouth">
+                <option value="Bournemouth, Christchurch and Poole">
+                <option value="Bracknell Forest">
+                <option value="Bradford">
+                <option value="Brent">
+                <option value="Bridgend">
+                <option value="Brighton and Hove">
+                <option value="Bristol, City of">
+                <option value="Bromley">
+                <option value="Buckinghamshire">
+                <option value="Bury">
+                <option value="Caerphilly">
+                <option value="Calderdale">
+                <option value="Cambridgeshire">
+                <option value="Camden">
+                <option value="Cardiff">
+                <option value="Carmarthenshire">
+                <option value="Central Bedfordshire">
+                <option value="Ceredigion">
+                <option value="City of Edinburgh">
+                <option value="City of London">
+                <option value="Clackmannanshire">
+                <option value="Comhairle nan Eilean Siar">
+                <option value="Conwy">
+                <option value="Cornwall excluding Isles of Scilly">
+                <option value="Coventry">
+                <option value="Croydon">
+                <option value="Cumbria">
+                <option value="Darlington">
+                <option value="Denbighshire">
+                <option value="Derby">
+                <option value="Derbyshire">
+                <option value="Devon">
+                <option value="Doncaster">
+                <option value="Dorset">
+                <option value="Dorset">
+                <option value="Dudley">
+                <option value="Dumfries & Galloway">
+                <option value="Dundee City">
+                <option value="Durham">
+                <option value="Ealing">
+                <option value="East Ayrshire">
+                <option value="East Cheshire">
+                <option value="East Dunbartonshire">
+                <option value="East Lothian">
+                <option value="East Renfrewshire">
+                <option value="East Riding of Yorkshire">
+                <option value="East Sussex">
+                <option value="Enfield">
+                <option value="Essex">
+                <option value="Falkirk">
+                <option value="Fife">
+                <option value="Flintshire">
+                <option value="Gateshead">
+                <option value="Glasgow City">
+                <option value="Gloucestershire">
+                <option value="Greenwich">
+                <option value="Gwynedd">
+                <option value="Hackney">
+                <option value="Halton">
+                <option value="Hammersmith and Fulham">
+                <option value="Hampshire">
+                <option value="Haringey">
+                <option value="Harrow">
+                <option value="Hartlepool">
+                <option value="Havering">
+                <option value="Herefordshire, County of">
+                <option value="Hertfordshire">
+                <option value="Highland">
+                <option value="Hillingdon">
+                <option value="Hounslow">
+                <option value="Inverclyde">
+                <option value="Isle of Anglesey">
+                <option value="Isle of Wight">
+                <option value="Isles of Scilly">
+                <option value="Islington">
+                <option value="Kensington and Chelsea">
+                <option value="Kent">
+                <option value="Kingston upon Hull, City of">
+                <option value="Kingston upon Thames">
+                <option value="Kirklees">
+                <option value="Knowsley">
+                <option value="Lambeth">
+                <option value="Lancashire">
+                <option value="Leeds">
+                <option value="Leicester">
+                <option value="Leicestershire">
+                <option value="Lewisham">
+                <option value="Lincolnshire">
+                <option value="Liverpool">
+                <option value="Luton">
+                <option value="Manchester">
+                <option value="Medway">
+                <option value="Merthyr Tydfil">
+                <option value="Merton">
+                <option value="Middlesbrough">
+                <option value="Midlothian">
+                <option value="Milton Keynes">
+                <option value="Monmouthshire">
+                <option value="Moray">
+                <option value="Neath Port Talbot">
+                <option value="Newcastle upon Tyne">
+                <option value="Newham">
+                <option value="Newport">
+                <option value="Norfolk">
+                <option value="North Ayrshire">
+                <option value="North East Lincolnshire">
+                <option value="North Lanarkshire">
+                <option value="North Lincolnshire">
+                <option value="North Northamptonshire">
+                <option value="North Somerset">
+                <option value="North Tyneside">
+                <option value="North Yorkshire">
+                <option value="Northamptonshire">
+                <option value="Northumberland">
+                <option value="Nottingham">
+                <option value="Nottinghamshire">
+                <option value="Oldham">
+                <option value="Orkney Islands">
+                <option value="Oxfordshire">
+                <option value="Pembrokeshire">
+                <option value="Perth & Kinross">
+                <option value="Peterborough">
+                <option value="Plymouth">
+                <option value="Poole">
+                <option value="Portsmouth">
+                <option value="Powys">
+                <option value="Reading">
+                <option value="Redbridge">
+                <option value="Redcar and Cleveland">
+                <option value="Renfrewshire">
+                <option value="Rhondda, Cynon, Taff">
+                <option value="Richmond upon Thames">
+                <option value="Rochdale">
+                <option value="Rotherham">
+                <option value="Rutland">
+                <option value="Salford">
+                <option value="Sandwell">
+                <option value="Scottish Borders">
+                <option value="Sefton">
+                <option value="Sheffield">
+                <option value="Shetland Islands">
+                <option value="Shropshire">
+                <option value="Slough">
+                <option value="Solihull">
+                <option value="Somerset">
+                <option value="South Ayrshire">
+                <option value="South Gloucestershire">
+                <option value="South Lanarkshire">
+                <option value="South Tyneside">
+                <option value="Southampton">
+                <option value="Southend-on-Sea">
+                <option value="Southwark">
+                <option value="St. Helens">
+                <option value="Staffordshire">
+                <option value="Stirling">
+                <option value="Stockport">
+                <option value="Stockton-on-Tees">
+                <option value="Stoke-on-Trent">
+                <option value="Suffolk">
+                <option value="Sunderland">
+                <option value="Surrey">
+                <option value="Sutton">
+                <option value="Swansea">
+                <option value="Swindon">
+                <option value="Tameside">
+                <option value="Telford and Wrekin">
+                <option value="The Vale of Glamorgan">
+                <option value="Thurrock">
+                <option value="Torbay">
+                <option value="Torfaen">
+                <option value="Tower Hamlets">
+                <option value="Trafford">
+                <option value="Wakefield">
+                <option value="Walsall">
+                <option value="Waltham Forest">
+                <option value="Wandsworth">
+                <option value="Warrington">
+                <option value="Warwickshire">
+                <option value="West Berkshire">
+                <option value="West Cheshire">
+                <option value="West Dunbartonshire">
+                <option value="West Lothian">
+                <option value="West Northamptonshire">
+                <option value="West Sussex">
+                <option value="Westminster">
+                <option value="Wigan">
+                <option value="Wiltshire">
+                <option value="Windsor and Maidenhead">
+                <option value="Wirral">
+                <option value="Wokingham">
+                <option value="Wolverhampton">
+                <option value="Worcestershire">
+                <option value="Wrexham">
+                <option value="York">
+            </datalist>
             <br><br>
-            <label for="popinput"> Population Size </label> <br>
+            <label for="popinput"> Population Size: </label> <br>
             <input id="popinput" type="range" value="500" min="100" max="1000" step="10" oninput="this.nextElementSibling.value = this.value" style="width: 300px;">
-            <output>500</output>
+            <input value="500" style="width: 50px; height: 25px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 20px;" oninput="document.getElementById('popinput').value = this.value">
             <br><br>
-            <label for="geninput"> Generations </label> <br>
+            <label for="geninput"> Generations: </label> <br>
             <input id="geninput" type="range" value="50" min="10" max="1000" step="10" oninput="this.nextElementSibling.value = this.value" style="width: 300px;">
-            <output>50</output>
+            <input value="500" style="width: 50px; height: 25px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 20px;" oninput="document.getElementById('geninput').value = this.value">
             <br><br>
-            <label for="budinput"> Budget </label> <br>
+            <label for="budinput"> Budget: </label> <br>
             <input id="budinput" type="range" value="250" min="20" max="1000" step="10" oninput="this.nextElementSibling.value = this.value" style="width: 300px;">
-            <output>250</output>
+            <input value="500" style="width: 50px; height: 25px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 20px;" oninput="document.getElementById('budinput').value = this.value">
             <br><br>
-            <input type="submit" value="Submit">
+            <input id="submit" type="submit" value="Submit">
         </form>
     </div>
     <script src="{{ url_for('static', filename='js/script.js') }}" /></script>
     <script>
-         {% for marker in markers %}
-        L.marker([{{ marker[0] }}, {{ marker[1] }}]).addTo(map)
-            .bindPopup("EV Charging point")
-        {% endfor %}
-        map.setZoom(12)
-        map.panTo(new L.LatLng({{lat}}, {{lon}}));
+        {% if markers.any() %}
+            {% for marker in markers %}
+                L.marker([{{ marker[0] }}, {{ marker[1] }}]).addTo(map)
+                    .bindPopup("EV Charging point")
+            {% endfor %}
+                map.setZoom(12)
+                map.panTo(new L.LatLng({{lat}}, {{lon}}));
+        {% else %}
+                map.setZoom(7)
+                map.panTo(new L.LatLng(52.8781, -1.9360));
+        {% endif %}
     </script>
 </body>
 </html>
