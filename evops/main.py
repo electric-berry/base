@@ -9,7 +9,7 @@ import os
 # 2. Change csv output format to include latitude and longitude column names 
 # 3. Add more args to get_csv()
 
-def get_csv(location):
+def get_csv(location,pop_size,generations,budget):
     print("Getting Data...")
     try:
         get_data(location)
@@ -18,13 +18,14 @@ def get_csv(location):
         print("Processing existing CSV file...")
     print("Done!")
     print("Processing Data...")
-    possible,latitudes,longitudes = get_possible_spots()
+    possible,latitudes,longitudes,traffics = get_possible_spots()
+    print(traffics)
     print("Done!")
     ga = genetic_algorithm
     print("Running Genetic Algorithm...")
-    agent = ga.execute(latitudes,longitudes,100,1000,100,possible,800)
+    agent = ga.execute(latitudes,longitudes,traffics,pop_size,generations,possible,budget)
     print("Done!")
-    # Population size, generations,threshold,possible_coordinates,budget
+    # ! lats, longs, pop_size, generations, possible_coordinates, budget
     # print(agent.fitness,agent.config)
     optimal = agent.config
     os.system("cls")
@@ -35,3 +36,7 @@ def get_csv(location):
         for t in agent.config:
             spamwriter.writerow(t)
     print("Done!")
+
+if __name__ == "__main__":
+    get_csv("Birmingham",1000,200,100)
+    

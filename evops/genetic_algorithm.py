@@ -18,7 +18,7 @@ def haversine(pt1,pt2):
 
 class genetic_algorithm:
 
-    def execute(latitudes, longitudes, traffic, pop_size, generations, possible_coords, budget, distance_limit=1):
+    def execute(latitudes, longitudes, traffic, pop_size, generations, possible_coords, budget, distance_limit=1000):
         neighbors = {i: () for i in range(len(latitudes))}
         distances = {}
         points = sorted([[latitudes[i], longitudes[i]]
@@ -48,7 +48,7 @@ class genetic_algorithm:
             def __str__(self):
                 return 'Fitness: ' + str(self.fitness)
             
-        def profit(agent,distance_limit = 1000,simuls = 100):
+        def profit(agent,distance_limit = 1000,simuls = 1000):
             # print("Call")
             '''
             setup adjacency matrix
