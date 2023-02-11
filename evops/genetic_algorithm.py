@@ -2,7 +2,11 @@ import random
 import numpy as np
 from math import radians, cos, sin, asin, sqrt
 import pandas as pd
+from matplotlib import pyplot as plt
 import os
+
+fitness_values = []
+
 def haversine(pt1,pt2):
     # output in miles
     lon1, lat1 = pt1
@@ -18,7 +22,7 @@ def haversine(pt1,pt2):
 
 class genetic_algorithm:
 
-    def execute(latitudes, longitudes, traffic, pop_size, generations, possible_coords, budget, distance_limit=1):
+    def execute(latitudes, longitudes, traffic, pop_size, generations, possible_coords, budget, distance_limit=1000):
         neighbors = {i: () for i in range(len(latitudes))}
         distances = {}
         points = sorted([[latitudes[i], longitudes[i]]
@@ -48,7 +52,8 @@ class genetic_algorithm:
             def __str__(self):
                 return 'Fitness: ' + str(self.fitness)
             
-        def profit(agent,distance_limit = 1000,simuls = 100):
+            
+        def profit(agent,distance_limit = 1000,simuls = 1000):
             # print("Call")
             '''
             setup adjacency matrix
@@ -105,6 +110,13 @@ class genetic_algorithm:
                     # ! https://www.which.co.uk/reviews/new-and-used-cars/article/electric-car-charging-guide/how-much-does-it-cost-to-charge-an-electric-car-a8f4g1o7JzXj
                 # ? possibly add regression or research to estimate traffic
             return profit/simuls/len(chargers)
+        
+        def plot_fitness():
+            plt.plot(fitness_values,color="b")
+            plt.title("Average Population Fitness")
+            plt.xlabel('Generations')
+            plt.ylabel('Fitness')
+            plt.savefig("fitness_plot.png")
 
         def generate_agents(population):
             return [Agent() for _ in range(population)]
@@ -158,6 +170,11 @@ class genetic_algorithm:
             agents = fitness(agents)
             agents = sorted(
                 agents, key=lambda agent: agent.fitness, reverse=True)
+            total_fitness = 0
+            for agent in agents:
+                total_fitness += agent.fitness
+            fitness_values.append(total_fitness/len(agents))
+            plot_fitness()
             # for agent in agents:
             #     print(agent)
             print(agents[0])
