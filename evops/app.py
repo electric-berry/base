@@ -15,8 +15,11 @@ def index():
         return render_template('index.html', markers=empty)
     elif request.method == "POST":
         region = request.form.get("region")
+        pop = request.form.get("pop")
+        gen = request.form.get("gen")
+        bud = request.form.get("bud")
         if region in locations:
-            get_csv(region)
+            get_csv(region, int(pop), int(gen), int(bud))
             df = pd.read_csv('optimal.csv')
             lats = df.iloc[:,0]
             lons = df.iloc[:,1]
