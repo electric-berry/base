@@ -16,6 +16,6 @@
 
 # Presentation
 - create a few cool animations with matplotlib
-    - create bfs searching algorithm
-    - road network thingimajig
+    - create bfs road traversal algorithm
+    - 3d render of traffic point
 
