@@ -47,7 +47,7 @@ class genetic_algorithm:
             def __init__(self):
                 self.config = []
                 random.shuffle(possible_coords)
-                for i in range(budget):
+                for i in range(min(budget,len(possible_coords))):
                     self.config.append(possible_coords[i])
                 self.fitness = 0
 
@@ -118,7 +118,7 @@ class genetic_algorithm:
             plt.title("Average Population Fitness")
             plt.xlabel('Generations')
             plt.ylabel('Fitness')
-            plt.savefig("fitness_plot.png")
+            plt.savefig(r"static\fitness_plot.png")
 
         def generate_agents(population):
             return [Agent() for _ in range(population)]
