@@ -5,9 +5,7 @@ import csv
 import os
 
 #TODO:
-# 1. Fix (?) genetic algorithm (doneish)
-# 2. Change csv output format to include latitude and longitude column names 
-# 3. Add more args to get_csv()
+# Somehow notify the frontend that a generation has passed
 
 def get_csv(location,pop_size,generations,budget):
     print("Getting Data...")

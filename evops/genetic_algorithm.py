@@ -2,6 +2,8 @@ import random
 import numpy as np
 from math import radians, cos, sin, asin, sqrt
 import pandas as pd
+import matplotlib
+matplotlib.use('agg')
 from matplotlib import pyplot as plt
 import os
 
@@ -185,8 +187,8 @@ class genetic_algorithm:
             #     print('Threshold met at generation '+str(i)+' !')
             #     break
 
-            if i % 5 == 0:
-                os.system("cls")
+            # if i % 5 == 0:
+                # os.system("cls")
 
         return agents[0]
 
