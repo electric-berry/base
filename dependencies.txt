@@ -1,0 +1,8 @@
+Front End:
+- leaflet.js (For interactive map)
+- jQuery (For running certain request functions)
+- Flask (For running the website)
+- numpy (For array functions)
+- pandas (For reading csv)
+
+Back End:
