@@ -38,5 +38,14 @@ def index():
         else:
             return "Please select a valid region in the drop down list and values in the allowed range."
 
+@app.route('/about')
+def about():
+    return "WIP"
+
+@app.route('/update')
+def update():
+    f = open('logs.txt','r')
+    return f.readlines()
+
 #if __name__ == '__main__':
 ls.run('0.0.0.0', '8080')

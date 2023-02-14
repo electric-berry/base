@@ -36,5 +36,5 @@ def get_csv(location,pop_size,generations,budget):
     print("Done!")
 
 if __name__ == "__main__":
-    get_csv("Birmingham",1000,200,100)
+    get_csv("Birmingham",100,10,100)
     
