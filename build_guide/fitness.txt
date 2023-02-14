@@ -1,0 +1,10 @@
+To utilise the genetic algorithm as an optimiser, we needed to define a fitness function. 
+To incentivise large corporations to use this program, we set the fitness function as calculating the profitability of the given configuration. 
+This is done by simulating the movement of EV vechile within the road network. 
+
+We simulated the traffic as movement between the network of count points. Each car would start at a random starting count point, 
+before travelling to each of its neighbors. This process is repeated recursively until the car runs out of fuel. If there is an 
+EV charging station at the point, the car is charged and the profit is recorded. Otherwise, the simulation ends. 
+
+Although the stochastic nature of the fitness makes optimisation more noisy, running through each count point would not be able to run
+efficiently on a raspberry pi.

@@ -91,6 +91,8 @@ class genetic_algorithm:
                         for point2 in new_states[:3]:
                             if not(tuple(sorted([point1,point2])) in visited):
                                 capacity -= distance*3
+                                if capacity <= 0:
+                                    break
                                 if point2 in chargers:
                                     # print("CHARGED")
                                     profit += (50-capacity)*0.34*traffic_value
