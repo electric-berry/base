@@ -4,5 +4,15 @@ Front End:
 - Flask (For running the website)
 - numpy (For array functions)
 - pandas (For reading csv)
+- liveserver (For smth idk)
+- PIL (For smth idk)
+- base64 (For smth idk)
+- io (For smth idk)
 
 Back End:
+- random (For mutation of agents) 
+- math (For calculation haversine function)
+- matplotlib (For plotting fitness of agents)
+- requests (For accessing government traffic data)
+- re (For parsing request data)
+- pandas (For processing csv data)

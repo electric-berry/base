@@ -1,13 +1,10 @@
 import random
 import numpy as np
 from math import radians, cos, sin, asin, sqrt
-import pandas as pd
 import matplotlib
 matplotlib.use('agg')
 from matplotlib import pyplot as plt
-import os
 
-fitness_values = []
 
 def haversine(pt1,pt2):
     # output in miles
@@ -26,7 +23,8 @@ class genetic_algorithm:
     
     def __init__(self):
         self.agents = None
-        self.generation
+        self.generations = 0
+        self.fitness_values = []
         
 
     def execute(self,latitudes, longitudes, traffic, pop_size, generations, possible_coords, budget, distance_limit=1000):
@@ -119,7 +117,7 @@ class genetic_algorithm:
             return profit/simuls/len(chargers)
         
         def plot_fitness():
-            plt.plot(fitness_values,color="b")
+            plt.plot(self.fitness_values,color="b")
             plt.title("Average Population Fitness")
             plt.xlabel('Generations')
             plt.ylabel('Fitness')
@@ -166,11 +164,11 @@ class genetic_algorithm:
                     agent.config[change_idx] = random.choice(possible_coords)
             return agents
 
-        self.generation += 1
+        self.generations += 1
         self.agents = generate_agents(pop_size)
         self.agents = fitness(self.agents)
         # for i in range(generations):
-        print('Generation', str(self.generation), ':')
+        print('Generation', str(self.generations), ':')
         self.agents = selection(self.agents)
         # print(len(agents))
         self.agents = crossover(self.agents, pop_size)
@@ -181,7 +179,7 @@ class genetic_algorithm:
         total_fitness = 0
         for agent in self.agents:
             total_fitness += agent.fitness
-        fitness_values.append(total_fitness/len(self.agents))
+        self.fitness_values.append(total_fitness/len(self.agents))
         plot_fitness()
         # for agent in agents:
         #     print(agent)
