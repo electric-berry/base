@@ -118,7 +118,7 @@ class genetic_algorithm:
             plt.title("Average Population Fitness")
             plt.xlabel('Generations')
             plt.ylabel('Fitness')
-            plt.savefig(r"static\fitness_plot.png")
+            plt.savefig("fitness_plot.png")
 
         def generate_agents(population):
             return [Agent() for _ in range(population)]
@@ -163,6 +163,7 @@ class genetic_algorithm:
 
         agents = generate_agents(pop_size)
         agents = fitness(agents)
+        logs = []
         for i in range(generations):
             print('Generation', str(i), ':')
             agents = selection(agents)
@@ -189,6 +190,11 @@ class genetic_algorithm:
 
             # if i % 5 == 0:
                 # os.system("cls")
+            open('logs.txt', 'w').close()
+            logs.append(f"Generation {str(i)}: {agents[0]}\n")
+        with open("logs.txt", "a") as f:
+            for i in logs:
+                f.write(i)
 
         return agents[0]
 
