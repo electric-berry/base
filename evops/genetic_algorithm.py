@@ -34,7 +34,7 @@ class genetic_algorithm:
             for point_2 in range(point_1, len(points)):
                 point1 = np.array(points[point_1])
                 point2 = np.array(points[point_2])
-                distance = abs(haversine(point1,p oint2))
+                distance = abs(haversine(point1,point2))
                 if distance <= distance_limit:
                     neighbors[point_1] = tuple(
                         list(neighbors[point_1]) + [point_2])
