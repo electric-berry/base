@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>EVOps</title>
+    <title>EV Opt</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
@@ -106,6 +106,12 @@
             opacity: 1;
             visibility: visible;
         }
+
+        #logo {
+            position: fixed;
+            margin-left: 36%;
+            margin-top: 0.5%;
+        }
     </style>
     <script>
         const value = document.querySelector("#popoutput")
@@ -126,7 +132,7 @@
         }, 500);
     </script>
 </head>
-<a href="/about"><h1>EVOps</h1></a>
+<a href="/about" id="logo"><img src="{{ url_for('static', filename='assets/Logo.png') }}" alt="Logo"></a>
 <body>
     <div id="map"></div>
     <div id="logs" style="text-align: center;">
@@ -373,7 +379,7 @@
         {% if markers.any() %}
             {% for marker in markers %}
                 L.marker([{{ marker[0] }}, {{ marker[1] }}]).addTo(map)
-                    .bindPopup("EV Charging point")
+                    .bindPopup("EV Charging Point at ({{marker[0]}}, {{marker[1]}})")
             {% endfor %}
                 map.setZoom(12)
                 map.panTo(new L.LatLng({{lat}}, {{lon}}));

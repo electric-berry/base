@@ -151,7 +151,7 @@ class genetic_algorithm:
                 child1.config = parent1.config[:split] + parent2.config[split:]
                 child1.config = parent2.config[:split] + parent1.config[split:]
 
-                offspring.append(child1)
+                offspring.append(child1) 
                 offspring.append(child2)
             agents.extend(offspring)
             return agents
