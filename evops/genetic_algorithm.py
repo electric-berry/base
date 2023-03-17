@@ -194,10 +194,10 @@ class genetic_algorithm:
                 # os.system("cls")
             open('logs.txt', 'w').close()
             logs.append(f"Generation {str(i)}: {agents[0]}\n")
+
         with open("logs.txt", "a") as f:
             for i in logs:
                 f.write(i)
-
         return agents[0]
 
 # ga = genetic_algorithm
