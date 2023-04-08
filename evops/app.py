@@ -23,7 +23,7 @@ def index():
         bud = request.form.get("bud")
         if region in locations:
             get_csv(region, int(pop), int(gen), int(bud))
-            df = pd.read_csv('optimal.csv')
+            df = pd.read_csv('static/assets/optimal.csv')
             lats = df.iloc[:,0]
             lons = df.iloc[:,1]
             lat = np.median(lats)

@@ -1,1 +1,14 @@
+<<<<<<< HEAD
 Generation 5: Fitness: 0.09478725897629357
+=======
+Generation 0: Fitness: 0.15758756802572055
+Generation 1: Fitness: 0.26319637915200345
+Generation 2: Fitness: 0.2785477399877453
+Generation 3: Fitness: 0.24874779999757268
+Generation 4: Fitness: 0.2815904156952296
+Generation 5: Fitness: 0.23961347471735134
+Generation 6: Fitness: 0.2623609034447952
+Generation 7: Fitness: 0.3332794160155384
+Generation 8: Fitness: 0.2956728940070573
+Generation 9: Fitness: 0.286883976743115
+>>>>>>> 9bc47384a5983e29fc83cc935a12c1c9c04b21e0

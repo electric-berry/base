@@ -29,7 +29,7 @@ def get_csv(location,pop_size,generations,budget):
     os.system("cls")
     print("Top Fitness:",str(agent.fitness))
     print("Writing to CSV...")
-    with open('optimal.csv', 'w') as fh:
+    with open('static/assets/optimal.csv', 'w') as fh:
         spamwriter = csv.writer(fh)
         for t in agent.config:
             spamwriter.writerow(t)

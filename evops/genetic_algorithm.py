@@ -151,7 +151,7 @@ class genetic_algorithm:
                 child1.config = parent1.config[:split] + parent2.config[split:]
                 child1.config = parent2.config[:split] + parent1.config[split:]
 
-                offspring.append(child1)
+                offspring.append(child1) 
                 offspring.append(child2)
             agents.extend(offspring)
             return agents
@@ -194,10 +194,10 @@ class genetic_algorithm:
                 # os.system("cls")
             open('logs.txt', 'w').close()
             logs.append(f"Generation {str(i)}: {agents[0]}\n")
+
         with open("logs.txt", "a") as f:
             for i in logs:
                 f.write(i)
-
         return agents[0]
 
 # ga = genetic_algorithm
