@@ -4,7 +4,6 @@ from threading import Lock
 from main import get_csv
 import pandas as pd
 import numpy as np
-from liveserver import LiveServer
 from locations import locations
 from PIL import Image
 import base64
@@ -32,7 +31,7 @@ import os
 
 #TODO:
 # Somehow notify the frontend that a generation has passed
-
+fitness_values = []
 def get_csv(location,pop_size,generations,budget):
     print("Getting Data...")
     try:
@@ -62,19 +61,27 @@ def get_csv(location,pop_size,generations,budget):
         for t in agent.config:
             spamwriter.writerow(t)
     print("Done!")
+    return ga
     
 def background_thread():
-    global region, pop, gen, bud
+    global region, pop, gen, bud,complete
     while True:
         if region:
-            get_csv(region, int(pop), int(gen), int(bud))
+            ga = get_csv(region, int(pop), int(gen), int(bud))
             region = False
             complete = True
+        if complete:
+            time.sleep(10)
+            print("SENDING DATA")
+            fitness_vals = ga.fitness_values
+            for i in range(len(fitness_vals)):
+                socketio.emit('updateSensorData', {'value': fitness_vals[i], "date": i})
+            break
     #get_csv(region, int(pop), int(gen), int(bud))
 
 @app.route('/', methods =["GET", "POST"])
 def index():
-    global region,pop,gen,bud
+    global region,pop,gen,bud,complete
     if request.method == "GET":
         return render_template('index_test.html', markers=empty, image=False)
     elif request.method == "POST":
@@ -85,6 +92,7 @@ def index():
         if region in locations:
             while not(complete):
                 pass
+            print("COMPLETE")
             df = pd.read_csv('optimal.csv')
             lats = df.iloc[:,0]
             lons = df.iloc[:,1]

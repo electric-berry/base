@@ -1,0 +1,51 @@
+bidict==0.22.1
+Bottleneck @ file:///C:/ci_311/bottleneck_1676500016583/work
+brotlipy==0.7.0
+certifi @ file:///C:/ci_311/certifi_1676421629969/work/certifi
+cffi @ file:///C:/ci_311/cffi_1676423759166/work
+charset-normalizer @ file:///tmp/build/80754af9/charset-normalizer_1630003229654/work
+click @ file:///C:/ci_311/click_1676433091657/work
+colorama @ file:///C:/ci_311/colorama_1676422310965/work
+contourpy @ file:///C:/ci_311/contourpy_1676431756017/work
+cryptography @ file:///C:/ci_311/cryptography_1679419210767/work
+cycler @ file:///tmp/build/80754af9/cycler_1637851556182/work
+Flask @ file:///C:/ci_311/flask_1676436667658/work
+flask-liveserver==0.0.4
+Flask-SocketIO==5.3.3
+fonttools==4.25.0
+idna @ file:///C:/ci_311/idna_1676424932545/work
+itsdangerous @ file:///tmp/build/80754af9/itsdangerous_1621432558163/work
+Jinja2 @ file:///C:/ci_311/jinja2_1676424968965/work
+kiwisolver @ file:///C:/ci_311/kiwisolver_1676431979301/work
+MarkupSafe @ file:///C:/ci_311/markupsafe_1676424152318/work
+matplotlib @ file:///C:/b/abs_49b2acwxd4/croot/matplotlib-suite_1679593486357/work
+mkl-fft==1.3.1
+mkl-random @ file:///C:/ci_311/mkl_random_1676481991689/work
+mkl-service==2.4.0
+munkres==1.1.4
+numexpr @ file:///C:/ci_311_rebuilds/numexpr_1679001276672/work
+numpy @ file:///C:/ci_311/numpy_and_numpy_base_1676426421739/work
+packaging @ file:///C:/b/abs_ed_kb9w6g4/croot/packaging_1678965418855/work
+pandas @ file:///C:/ci_311_rebuilds/pandas_1679004481142/work
+Pillow==9.4.0
+ply==3.11
+pycparser @ file:///tmp/build/80754af9/pycparser_1636541352034/work
+pyOpenSSL @ file:///C:/b/abs_de215ipd18/croot/pyopenssl_1678965319166/work
+pyparsing @ file:///C:/ci_311/pyparsing_1678502182533/work
+PyQt5==5.15.7
+PyQt5-sip @ file:///C:/ci_311/pyqt-split_1676428895938/work/pyqt_sip
+PySocks @ file:///C:/ci_311/pysocks_1676425991111/work
+python-dateutil @ file:///tmp/build/80754af9/python-dateutil_1626374649649/work
+python-engineio==4.4.0
+python-socketio==5.8.0
+pytz @ file:///C:/ci_311/pytz_1676427070848/work
+requests @ file:///C:/ci_311/requests_1679434043851/work
+sip @ file:///C:/ci_311/sip_1676427825172/work
+six @ file:///tmp/build/80754af9/six_1644875935023/work
+toml @ file:///tmp/build/80754af9/toml_1616166611790/work
+tornado @ file:///C:/ci_311/tornado_1676423689414/work
+urllib3 @ file:///C:/b/abs_3ce53vrdcr/croot/urllib3_1680254693505/work
+watchdog==3.0.0
+Werkzeug @ file:///C:/b/abs_8578rs2ra_/croot/werkzeug_1679489759009/work
+win-inet-pton @ file:///C:/ci_311/win_inet_pton_1676425458225/work
+wincertstore==0.2
