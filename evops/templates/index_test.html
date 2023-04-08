@@ -9,15 +9,18 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
         integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
         crossorigin="" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.4/socket.io.js" integrity="sha512-aMGMvNYu8Ue4G+fHa359jcPb1u+ytAF+P2SCb+PxrjCdO3n3ZTxJ30zuH39rimUggmTwmh2u7wvQsDTHESnmfQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
         integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
         crossorigin=""></script>
+        
     <style>
         
         body {
             padding: 0;
             margin: 0;
-            background-image: url('test.jpg');
         }
         #map {
             height: 86%;
@@ -109,31 +112,18 @@
             visibility: visible;
         }
     </style>
-    <script>
-        const value = document.querySelector("#popoutput")
-        const input = document.querySelector("#popinput")
-            value.textContent = input.value
-            input.addEventListener("input", (event) => {
-            value.textContent = event.target.value
-        })
-        function update(){
-            $.get("/update", function(data){
-                $("#output").html(data)
-            });
-            console.log('ran')
-        }
-        update()
-        var intervalId = setInterval(function() {
-            update()
-        }, 500);
-    </script>
 </head>
 <a href="/about"><h1>EVOps</h1></a>
 <body>
+    <script type="text/javascript" src="{{ url_for('static', filename = 'js/app.js') }}"></script>
     <div id="map"></div>
     <div id="logs" style="text-align: center;">
         <text> Logs </text>
-        <image id="fitness" src="data:image/png;base64,{{ img_data }}" alt="fitness plot" style="display: none; max-width:100%; max-height:88%;"></image>
+        <div class="container">
+            <div class="chart-container">
+            <canvas id="myChart" width="800" height="350"></canvas>
+            </div>
+        </div>
         <p id="output"></p>
     </div>
     <div id="input">

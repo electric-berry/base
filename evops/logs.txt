@@ -1,1 +1,1 @@
-Generation 1: Fitness: 0.023747926268905574
+Generation 5: Fitness: 0.09478725897629357

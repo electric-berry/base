@@ -9,7 +9,6 @@ import base64
 import io
 
 empty = np.array([])
-async_mode = None
 app = Flask(__name__)
 ls = LiveServer(app)
 

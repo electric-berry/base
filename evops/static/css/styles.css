@@ -27,3 +27,7 @@ h1 {
     font-size: 48px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+.chart-container {
+	margin: 0 auto;
+}
