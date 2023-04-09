@@ -1,1 +1,1 @@
-Generation 10: Fitness: 0.32718299159919495
+Generation 10: Fitness: 0.09362929973860602

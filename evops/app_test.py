@@ -71,7 +71,7 @@ def background_thread():
             region = False
             complete = True
         if complete:
-            time.sleep(10)
+            time.sleep(1)
             print("SENDING DATA")
             fitness_vals = ga.fitness_values
             for i in range(len(fitness_vals)):
