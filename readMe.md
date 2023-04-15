@@ -40,7 +40,7 @@ to run the latest development version, run
 
 ```shell
 cd evops
-python app.py
+python app_test.py
 ```
 
 You should see the following output:
