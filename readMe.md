@@ -36,10 +36,16 @@ pip install -r requirements.txt`
 cd evops
 python app.py
 ```
+to run the latest development version, run
+
+```shell
+cd evops
+python app.py
+```
 
 You should see the following output:
 
-``` shell
+``` text
 WebSocket transport not available. Install simple-websocket for improved performance.
  * Serving Flask app 'app'
  * Debug mode: off
