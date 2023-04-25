@@ -27,24 +27,25 @@ class genetic_algorithm:
         self.fitness_values = []
         
 
-    def execute(self,latitudes, longitudes, traffic, pop_size, generations, possible_coords, budget, distance_limit=1000):
-        neighbors = {i: () for i in range(len(latitudes))}
-        distances = {}
-        points = sorted([[latitudes[i], longitudes[i]]
-                        for i in range(len(latitudes))])
+    def execute(self,latitudes, longitudes, traffic, pop_size, possible_coords, budget, distance_limit=1000):
+        if self.generations == 0:
+            self.neighbors = {i: () for i in range(len(latitudes))}
+            self.distances = {}
+            self.points = sorted([[latitudes[i], longitudes[i]]
+                            for i in range(len(latitudes))])
 
-        for point_1 in range(len(points)):
-            for point_2 in range(point_1, len(points)):
-                point1 = np.array(points[point_1])
-                point2 = np.array(points[point_2])
-                distance = abs(haversine(point1,point2))
-                if distance <= distance_limit:
-                    neighbors[point_1] = tuple(
-                        list(neighbors[point_1]) + [point_2])
-                    neighbors[point_2] = tuple(
-                        list(neighbors[point_2]) + [point_1])
-                    distances[tuple([point_1, point_2])] = distance
-            
+            for point_1 in range(len(self.points)):
+                for point_2 in range(point_1, len(self.points)):
+                    point1 = np.array(self.points[point_1])
+                    point2 = np.array(self.points[point_2])
+                    distance = abs(haversine(point1,point2))
+                    if distance <= distance_limit:
+                        self.neighbors[point_1] = tuple(
+                            list(self.neighbors[point_1]) + [point_2])
+                        self.neighbors[point_2] = tuple(
+                            list(self.neighbors[point_2]) + [point_1])
+                        self.distances[tuple([point_1, point_2])] = distance
+                
 
         class Agent:
             def __init__(self):
@@ -68,12 +69,12 @@ class genetic_algorithm:
             assume 50kwh capacity
             '''
             profit = 0
-            chargers = [points.index(charger) for charger in agent.config]
+            chargers = [self.points.index(charger) for charger in agent.config]
             # print("CHARGERS",chargers)
 
             visited = set()
             for _ in range(simuls):
-                random_idx = random.randint(1,len(points)-1)
+                random_idx = random.randint(1,len(self.points)-1)
                 queue = []
                 # each node is [node,capacity in kwh,distance_travelled in coordinates]
                 head = 0 
@@ -84,7 +85,7 @@ class genetic_algorithm:
                     point1,capacity,distance = queue[head]
                 
                     head += 1
-                    new_states = neighbors[point1]
+                    new_states = self.neighbors[point1]
                     traffic_value = traffic[point1]/len(new_states)
                     # print(point1,new_states)
                     if distance < distance_limit:
@@ -103,7 +104,7 @@ class genetic_algorithm:
                                 # ! https://www.fleetalliance.co.uk/driver-ev/mpg-to-kwh-electric-car-efficiency-explained/#:~:text=Most%20EVs%20will%20cover%20between,it%20will%20cost%20to%20run.
                                 # change capacity by distance
                                 # print(distance,distances[tuple(sorted([point1,point2]))])
-                                new_state = [point2,capacity,distance + distances[tuple(sorted([point1,point2]))]]
+                                new_state = [point2,capacity,distance + self.distances[tuple(sorted([point1,point2]))]]
                                 queue.append(new_state)
                                 # print(queue)
                                 visited.add(tuple(sorted([point1,point2])))
@@ -167,8 +168,9 @@ class genetic_algorithm:
             return agents
 
         self.generations += 1
-        self.agents = generate_agents(pop_size)
-        self.agents = fitness(self.agents)
+        if self.generations == 1:
+            self.agents = generate_agents(pop_size)
+            self.agents = fitness(self.agents)
         # for i in range(generations):
         print('Generation', str(self.generations), ':')
         self.agents = selection(self.agents)

@@ -47,7 +47,7 @@ def get_csv(location,pop_size,generations,budget):
     ga = genetic_algorithm()
     print("Running Genetic Algorithm...")
     for i in range(generations):
-        agent = ga.execute(latitudes,longitudes,traffics,pop_size,generations,possible,budget)
+        agent = ga.execute(latitudes,longitudes,traffics,pop_size,possible,budget)
         socketio.emit('updateSensorData', {'value': ga.fitness_values[-1], "date": i})
     print("Done!")
     # ! lats, longs, pop_size, generations, possible_coordinates, budget

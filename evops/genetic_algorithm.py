@@ -1,7 +1,6 @@
 import random
 import numpy as np
 from math import radians, cos, sin, asin, sqrt
-import pandas as pd
 import matplotlib
 matplotlib.use('agg')
 from matplotlib import pyplot as plt
