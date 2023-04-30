@@ -112,9 +112,19 @@
             opacity: 1;
             visibility: visible;
         }
+
+        #logo {
+            position: fixed;
+            margin-left: 36%;
+            margin-top: 0.5%;
+        }
+
+        body {
+            font-family: Arial;
+        }
     </style>
 </head>
-<a href="/about"><h1>EVOps</h1></a>
+<a href="/about" id="logo"><img src="{{ url_for('static', filename='assets/Logo.png') }}" alt="Logo"></a>
 <body>
     <script type="text/javascript" src="{{ url_for('static', filename = 'js/app.js') }}"></script>
     <div id="map"></div>
@@ -366,7 +376,7 @@
         {% if markers.any() %}
             {% for marker in markers %}
                 L.marker([{{ marker[0] }}, {{ marker[1] }}]).addTo(map)
-                    .bindPopup("EV Charging point")
+                    .bindPopup("EV Charging Point at ({{marker[0]}}, {{marker[1]}})")
             {% endfor %}
                 map.setZoom(12)
                 map.panTo(new L.LatLng({{lat}}, {{lon}}));
@@ -376,8 +386,10 @@
         {% endif %}
         {% if image %}
             document.getElementById("fitness").style.display = "block";
+            document.getElementById("downloadbutton").style.display = "block";
         {% else %}
             document.getElementById("fitness").style.display = "none";
+            document.getElementById("downloadbutton").style.display = "none";
         {% endif %}
     </script>
 </body>
