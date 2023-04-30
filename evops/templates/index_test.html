@@ -120,11 +120,14 @@
 
         body {
             font-family: Arial;
-        }
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;
+          }
     </style>
 </head>
 <a href="/about" id="logo"><img src="{{ url_for('static', filename='assets/Logo.png') }}" alt="Logo"></a>
-<body background="{{ url_for('static', filename='assets/test.jpg')}}" alt="Background">
+<body background="{{ url_for('static', filename='assets/test.jpg')}}" alt="Background"></body>
     <script type="text/javascript" src="{{ url_for('static', filename = 'js/app.js') }}"></script>
     <div id="map"></div>
     <div id="logs" style="text-align: center;">
