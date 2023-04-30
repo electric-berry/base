@@ -59,7 +59,7 @@ class genetic_algorithm:
                 return 'Fitness: ' + str(self.fitness)
             
             
-        def profit(agent,distance_limit = 1000,simuls = 1000):
+        def profit(agent,distance_limit = 10,simuls = 10):
             # print("Call")
             '''
             setup adjacency matrix
@@ -163,7 +163,7 @@ class genetic_algorithm:
         def mutation(agents):
             for agent in agents:
                 if random.uniform(0.0, 1.0) <= 0.1:
-                    change_idx = random.randint(0, budget-1)
+                    change_idx = random.randint(0, min(budget-1,len(possible_coords)))
                     agent.config[change_idx] = random.choice(possible_coords)
             return agents
 
