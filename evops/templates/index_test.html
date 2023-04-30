@@ -21,15 +21,18 @@
         body {
             padding: 0;
             margin: 0;
+            box-sizing: border-box;
         }
         #map {
             height: 86%;
             width: 48%;
             position: fixed;
-            margin-top: 6.5%;
+            margin-top: -6%;
             margin-left: 1.5%;
-            outline: 5px solid black;
-            border-radius: 25px;
+            border-style: solid;
+            border-radius: 50px;
+            border-width: 5px;
+            border-color: #38761d;
         }
         
         #input {
@@ -38,11 +41,13 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             position: fixed;
             margin-left: 52.5%;
-            margin-top: 30%;
-            outline: 5px solid black;
+            margin-top: 21.5%;
+            border-style: solid;
+            border-radius: 50px;
+            border-width: 5px;
+            border-color: #38761d;
             height: 45%;
             width: 45%;
-            border-radius: 25px;
         }
 
         #logs {
@@ -51,11 +56,13 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             position: fixed;
             margin-left: 52.5%;
-            margin-top: 6.5%;
-            outline: 5px solid black;
+            margin-top: -6.0%;
             height: 37.5%;
             width: 45%;
-            border-radius: 25px;
+            border-style: solid;
+            border-radius: 50px;
+            border-width: 5px;
+            border-color: #38761d;
         }
 
         #reginput {
@@ -63,7 +70,7 @@
             height: 25px;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             font-size: 20px;
-            margin-top: 5px;
+            margin-top: 0px;
         }
         
         h1 {
@@ -95,9 +102,9 @@
             opacity: 0;
             width: max-content;
             background-color: black;
-            color: #fff;
+            color: #59834b;
             text-align: center;
-            border-radius: 5px;
+            border-radius: 20px;
             padding: 5px 5px;
             transition: opacity 0.5s ease-in-out;
             
@@ -111,23 +118,68 @@
             opacity: 1;
             visibility: visible;
         }
+
+        #logo {
+            position: fixed;
+            margin-left: 39%;
+            margin-top: 2%;
+        }
+
+        img.logo-image{
+            width: 50%;
+            border-radius: 30px;
+            width: 300px;
+            height = auto;
+        }
+
+        svg {
+            position = absolute;
+            bottom = 0;
+            left = 0;
+        }
+
+        .coolbutton {
+            display: inline-block;
+            outline: none;
+            cursor: pointer;
+            font-size: 14px;
+            line-height: 1;
+            border-radius: 500px;
+            transition-property: background-color,border-color,color,box-shadow,filter;
+            transition-duration: .3s;
+            border: 1px solid transparent;
+            letter-spacing: 2px;
+            min-width: 160px;
+            text-transform: uppercase;
+            white-space: normal;
+            font-weight: 700;
+            text-align: center;
+            padding: 16px 14px 18px;
+            color: #fff;
+            background-color: #15883e;
+            height: 48px;
+            margin-bottom: 5px;
+        }
+
+        .coolbutton:hover{
+            background-color: #1db954;
+        }
     </style>
 </head>
-<a href="/about"><h1>EVOps</h1></a>
+<a id="logo"><img class = "logo-image" src="{{ url_for('static', filename='assets/Logo.png') }}" alt="Logo"></a>
 <body>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 200" > <path fill="#59834b" fill-opacity="1" d="M0,192L48,176C96,160,192,128,288,128C384,128,480,160,576,176C672,192,768,192,864,181.3C960,171,1056,149,1152,138.7C1248,128,1344,128,1392,128L1440,128L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>
     <script type="text/javascript" src="{{ url_for('static', filename = 'js/app.js') }}"></script>
     <div id="map"></div>
     <div id="logs" style="text-align: center;">
-        <text> Logs </text>
         <div class="container">
             <div class="chart-container">
-            <canvas id="myChart" width="800" height="350"></canvas>
+            <canvas id="myChart" width="780" height="450"></canvas>
             </div>
         </div>
         <p id="output"></p>
     </div>
     <div id="input">
-        <text> Parameters </text>
         <br><br>
         <form action="{{ url_for('index')}}" method="post">
             <span class="hovertext" data-hover="Please choose an option from the drop down list"> <label for="reginput"> Choose a region: </label> </span> <br>
@@ -357,7 +409,7 @@
             <input id="budinput" name="bud" type="range" value="250" min="20" max="1000" step="10" oninput="this.nextElementSibling.value = this.value" style="width: 300px; margin-bottom: 3%;">
             <input value="500" style="width: 50px; height: 25px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 20px;" oninput="document.getElementById('budinput').value = this.value">
             <br>
-            <input id="submit" type="submit" value="Optimise!">
+            <input id="submit" type="submit" value="Optimise!" class="coolbutton">
         </form>
     </div>
     <script src="{{ url_for('static', filename='js/script.js') }}" /></script>

@@ -9,7 +9,7 @@ $(document).ready(function () {
     const myChart = new Chart(ctx, {
       type: "line",
       data: {
-        datasets: [{ label: "Population Average Fitness",  }],
+        datasets: [{ label: "Population Average Fitness"}],
       },
       options: {
         borderWidth: 3,
