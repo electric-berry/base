@@ -124,7 +124,7 @@
     </style>
 </head>
 <a href="/about" id="logo"><img src="{{ url_for('static', filename='assets/Logo.png') }}" alt="Logo"></a>
-<body>
+<body background="{{ url_for('static', filename='assets/test.jpg')}}" alt="Background">
     <script type="text/javascript" src="{{ url_for('static', filename = 'js/app.js') }}"></script>
     <div id="map"></div>
     <div id="logs" style="text-align: center;">
