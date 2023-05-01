@@ -129,14 +129,10 @@
             width: 50%;
             border-radius: 30px;
             width: 300px;
-            height = auto;
+            height: auto;
         }
 
-        svg {
-            position = absolute;
-            bottom = 0;
-            left = 0;
-        }
+        
 
         .coolbutton {
             display: inline-block;
@@ -164,6 +160,10 @@
         .coolbutton:hover{
             background-color: #1db954;
         }
+
+        #myChart {
+            height: 100%
+        }
     </style>
 </head>
 <a id="logo"><img class = "logo-image" src="{{ url_for('static', filename='assets/Logo.png') }}" alt="Logo"></a>
@@ -172,12 +172,7 @@
     <script type="text/javascript" src="{{ url_for('static', filename = 'js/app.js') }}"></script>
     <div id="map"></div>
     <div id="logs" style="text-align: center;">
-        <div class="container">
-            <div class="chart-container">
-            <canvas id="myChart" width="780" height="450"></canvas>
-            </div>
-        </div>
-        <p id="output"></p>
+            <canvas id="myChart" width="780"></canvas>
     </div>
     <div id="input">
         <br><br>

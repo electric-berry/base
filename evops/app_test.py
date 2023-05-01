@@ -134,4 +134,4 @@ def disconnect():
     print('Client disconnected',  request.sid)
 
 if __name__ == '__main__':
-    socketio.run(app)
+    socketio.run(app, port=8080)
